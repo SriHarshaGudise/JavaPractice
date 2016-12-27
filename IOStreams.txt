@@ -1,0 +1,126 @@
+/*All file operations*/
+import java.io.File;
+class AllFile
+{
+  public static void main(String []args)
+{
+    File f = null;
+File f2 = null;
+    boolean b;
+File [] path;
+URI uri;
+ try
+{
+ f = new File("d:/mytext.txt");
+//create a new file 
+b = f.createNewFile();
+if(b)
+{
+//to get the path of the file
+System.out.println("File you have created is"+f.getAbsolutePath()); 
+}
+// to delete the file which we have created
+b = f.delete();
+// to check whether the file exists after invoking delete method
+if(f.exists())
+{
+System.out.println("File exists");
+}else{
+System.out.println("Otherwise file deleted by delete method");
+}
+f2 = new File("d:/");
+// to list all files which ever in the folder or directory
+path = f2.listFiles();
+for(File d:path)
+{
+// to get the path of that file
+System.out.println(d.getPathName());
+}
+System.out.println("the hashcode of the following file is"+ f.hashCode);
+// we have to change the name of the following file then
+b =f.renameTo(File d:/mytext1.txt);
+if(b)
+{
+System.out.println("the file destination is"+f.getAbsolutePath());
+}
+// to get the uri of the file
+uri = f.toURI();
+System.out.println("URI"+ uri);
+}
+catch(Exception e)
+{
+e.printStackTrace();
+}
+}
+}
+Output:  File you have created is : d:\mytext.txt
+	otherwise file deleted by delete method
+	d:/mytext
+	d:/Read
+	d:/Good
+	d:/089445567n.jpg
+	the hashcode of the following file is: 05462388h
+	the file destination is d:\mytext1
+	URI file:/d:/java%20.mytext1.txt
+
+/* Readin byte array using different streams*/
+import  java.io.InputStream;
+import  java.io.BufferedInputStream;
+import  java.io.ByteArrayStream;
+import  java.io.ObjectInputstream;
+import  java.io.FileInputStream;
+import  java.io.FilterInputStream;
+class  AllStreams
+{
+public static void main(String []args) throws Exception
+{
+BufferedInputStream bis = null;
+ByteArrayStream bas = null;
+byte buf[] = {65,66,67,68,69};
+InputStream  in = null;
+FileInputStream fis = null;
+FilterInputStream Fiis = null;
+try
+{
+bas = new ByteArrayStream(buf);
+int a =0;
+while((a = bas.read())!=-1)
+{
+char c = (char) a;
+System.out.println("the character is: "+ c);
+}
+in = new FileInputStream("d:/mytext.txt");
+bis = new BufferedInputStream(in);
+int numbytes = bis.available();
+byte []c = new byte[numbytes];
+bis.read(c,0,3);
+for(byte r:c)
+{
+char characters = (char) r;
+System.out.println(characters);
+}
+in = new FileInputStream("d:/mytext1.txt");
+fis = new BufferedInputStream(in);
+byte buffer[] = new byte[(int) fis.length()];
+int def = 0;
+def = fis.read(buffer);
+fiis = new  FileInputStream("d:/myetxt1.txt");
+int a = 0;
+fiis.read();
+}
+catch(Exception e)
+{
+e.printStackTrace();
+}
+finally
+{
+if(bas!=null)
+{
+bas.close();
+}
+if(bis!=null)
+{
+      bis.close();
+}
+}
+    

@@ -1,0 +1,225 @@
+Inner classes:
+1.Inner class
+2.Static inner class
+3.Anonymous class
+4.Lambda Expressions
+
+Inner class explanation type:
+program:://
+public class InnerClasses
+ {
+public static void main(String []args)
+{	A a = new A();
+	A.B obj = a.new B();
+	obj.show();
+}
+}
+class A
+{
+	int rollno;
+	String s;
+	public class B
+{
+	public void show()
+{
+	System.out.println("hai");
+}
+}
+}
+o/P:
+		hai
+
+//Static inner class type explanation:
+Program::
+
+public class NestedClass 
+{
+public static void main(String []args)
+{
+	S.B obj = new S.B();
+	obj.show();
+}
+}
+ class S
+{
+int rollno;
+String s;
+static class B
+{
+public void show()
+{
+System.out.println("hai");
+}
+}
+}
+o/P:
+		hai
+
+//program to explain Anonymous inner class
+
+program::
+
+public class AnonymousClass extends B {
+public static void main(String []args)
+{
+B bb = new B()			{
+public void show()
+{
+System.out.println("hai,jaab,hukkka");
+}
+};	
+bb.show();
+}
+}
+ class B
+{
+public void show()
+{
+System.out.println("hai");
+}
+}
+o/P:
+	hai,jaab,hukkka
+
+
+// collections topics 
+// usings lists ...
+
+
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Random;
+
+public class Listss {
+	public static void main(String []args)
+	{
+		Random r = new Random();// random numbers will be taken using this random object
+		List<Integer> s = new ArrayList<Integer>();
+		s.add(89);
+		s.add(24);
+		s.add(78);
+		s.add(98);
+		s.add(26);
+		s.add(3, 56);
+		s.add(r.nextInt(20));
+		//Collections.sort(s);
+		//Collections.reverse(s);
+		for(Object o :s)
+		{
+			System.out.println(o);
+		}
+		System.out.println();
+		
+		// Sort the objects taking the precision of last numbers in list
+		Comparator<Integer> cmp = new Compimpl();
+		Collections.sort(s,cmp);// sorting using comparator implementation method
+		for(int i :s)
+		{
+			System.out.println(i);
+		}
+	}
+
+}
+output:
+		89
+		24
+		78
+		56
+		98
+		26
+		6
+
+		24// this sorts by taking end letter of elements
+		 6
+		26
+		56
+		98
+		78
+
+
+
+
+// Entering marks and roll no of student using lists and sorting according to marks using anonymous class.
+
+
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+public class CollectionsTuts 
+{
+	public static void main(String []args)
+	{
+		List<Student> ls = new ArrayList<>();
+		ls.add(new Student(1,45));
+		ls.add(new Student(2,76));
+		ls.add(new Student(3,23));
+		ls.add(new Student(4,87));
+		Collections.sort(ls,new Comparator<Student>() {
+			@Override
+			public int compare(Student s1, Student s2) {
+				return s1.marks>s2.marks?-1:s1.marks<s2.marks?1:0;
+			}
+		});
+		for(Student st:ls)
+		{
+			System.out.println(st);
+		}
+		
+	}
+
+}
+class Student
+{
+	int rollno;
+	int marks;
+	public Student(int rollno,int marks) //constructor
+{
+	this.rollno = rollno;
+	this.marks = marks;
+	}
+	@Override
+	public String toString() //override method
+{
+		return ("STUDENT"+"["+rollno+","+marks+"]");
+    }
+}
+
+
+
+
+output:          STUDENT[4,87]
+		 STUDENT[2,76]
+		 STUDENT[1,45]
+		 STUDENT[3,23]
+
+
+
+
+
+//linkedhash map program to print all key and values
+
+import java.util.*;
+public class LinkedHASHMAP
+{
+public static void main(String []args)
+{
+	LinkedHashMap lhm = new LinkedHashMap();
+	lhm.put(1, "harsha");
+	lhm.put(3, "gandhi");
+	lhm.put(4, "hameed");
+	lhm.put(2, "mounika");
+	Set s = lhm.entrySet();
+	Iterator itr = s.iterator();
+	while(itr.hasNext())
+	{
+		System.out.println(itr.next());
+	}
+	
+}
+}

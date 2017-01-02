@@ -1,0 +1,203 @@
+
+
+Schema 1:
+
+  Name:  Age:  Address:         Gender:   Nationality:
+
+1 Harsha  20   Jubliee Hills     Male      Indian
+2.Suman   21    BanjaraHills     Male      Indian
+3.Mounika 21	West Maredpally  Female    Indian
+4.Hameed  21    Mehadipatnam     Male      Indian
+5.Gandhi  20    Seethapahal	 Male 	   Indian
+
+
+package suman;
+import java.util.Scanner;
+
+public class Voting 
+	{
+	public static void main(String []args)
+	{
+	Scanner s = new Scanner(System.in);
+	System.out.println("enter the size: ");
+	int size = s.nextInt();
+	int count,count1;
+	String []gender= new String[size];
+	for(int i = 0;i<size;i++)
+	{
+	gender[i] = s.next();
+	}
+	count = 0;count1 = 0;
+	for(int j = 0;j<size;j++)
+	{
+	 if(gender[j].equals("male"))
+	 {
+		 count = count+1;
+	 }
+		 else
+		 {
+			 count1++;
+		 }
+	}
+	 System.out.println("male count is: "+count);
+	 System.out.println("female count is: "+ count1);
+	}
+	}
+
+
+package suman;
+import java.util.Scanner;
+
+public class Age {
+	public static void main(String []args)
+	{
+		Scanner s = new Scanner(System.in);
+		int size = s.nextInt();
+		int age[] = new int[size];
+		for(int i = 0;i<size;i++)
+		{
+			age[i] = s.nextInt();
+		}
+		int count=0,count1=0;
+		for(int i = 0;i<size;i++)
+		{
+			if(age[i]>=18)
+			{
+				count++;
+			}
+			if(age[i]>=60)
+			{
+				count1++;
+			}
+		}
+		System.out.println("count of people who are eligible for voting: "+ count);
+		System.out.println("people who are senior citizens : "+ count1);
+	}
+
+}
+
+import java.util.Scanner;
+public class Ageabove3 {
+
+	public static void main(String []args)
+	{
+		Scanner s = new Scanner(System.in);
+		int size = s.nextInt();
+		int age[] = new int[size];
+		for(int i = 0;i<size;i++)
+		{
+			age[i] = s.nextInt();
+		}
+		int count = 0;
+		for(int j = 0;j<size;j++)
+		{
+			if(age[j]>=15 && age[j]<18)
+			{
+				count++;
+			}
+		}
+		System.out.println("the number of perople within 3 years of voting are: "+ count);
+	}
+}
+
+Query:
+1.How many males and females are there in the records?
+2.Count of people who are eligible for voting(age>=18)?
+3.Count of people who are within 3 years of voting?
+4.Count of people who are senior citizens (age>=60)? 
+
+Schema2:
+
+  Name:       TotalScore:   CityName:   Gender:
+
+1.Harsha	60          Kolkata	Male
+2.Rahul 	87	    Kolkata	Male
+3.Mounika	76	    Hyderabad	Female
+4.Amani 	45	    Mumbai	Female
+5.Rupesh	35	    Mumai	Male
+
+
+Query:
+1.Count no fo people who are passed the Board Exam(total Score>=50)?
+2.Count people whose total score are between 90 and 100?
+3.How many boys adn girls whose score is 80 to 100?
+4.Highest pass percentage city?
+
+
+import java.util.Scanner;
+public class TotalPass {
+	public static void main(String []args)
+	{
+		Scanner s = new Scanner(System.in);
+				int size = s.nextInt();
+		double ts[] = new double[size];
+		String gender[] = new String[size];
+		String City[]= new String[size];
+		for(int i = 0;i<size;i++)
+		{
+			ts[i] = s.nextDouble();
+			gender[i] = s.next();
+			//City[i] = s.next();
+			
+		}
+		int count = 0,count1=0,decount=0,decount1=0;
+		for(int j = 0;j<size;j++)
+		{
+			if(ts[j]>=50)
+			{
+			count++;	
+			}
+			if(ts[j]>=90 && ts[j]>100)
+			{
+				count1++;
+			}
+			if((ts[j]>=80&&ts[j]<=100))
+			{
+				if( gender[j].equals("male"))
+				{
+					decount++;
+				}
+				else
+				{
+					decount1++;
+				}
+			}
+		}
+		/*double pass=0,pass1=0,pass3=0;
+		for(int k = 1;k<=size;k++)
+		{
+			if(City[k].equals("kolkata"))
+			{
+				pass = pass+ts[k];
+				pass = (pass/k)*100;
+			}
+			else if(City[k].equals("Mumbai"))
+			{
+				pass1 = pass1+ts[k];
+				pass1 = (pass1/k)*100;
+			}
+			else if(City[k].equals("Hyderabad"))
+			{
+				pass3 = pass3+ts[k];
+				pass3 = (pass3/k)*100;
+			}
+		}
+		if(pass>pass1&&pass>pass3)
+		{
+			System.out.println("pass percentage is "+pass +"kolkata");
+		}
+		else if(pass1>pass && pass1>pass3)
+		{
+			System.out.println("pass percentage is "+pass1+"Mumbai");
+		}
+		else if(pass3>pass&&pass3>pass1)
+		{
+			System.out.println("pass percentage is "+pass3+"hyderabad");
+		}*/
+		System.out.println("the number of passed students are:"+count);
+		System.out.println("the numer of students who are above 80 and below 100"+" "+count1);
+		System.out.println("the number of boys who are above 80 and 100"+" "+decount);
+		System.out.println("the number of girls who are aove 80 and below 100"+" "+decount1);
+		}
+
+}

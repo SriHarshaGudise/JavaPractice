@@ -1,0 +1,214 @@
+Schema::
+
+	Name       Age        Salary	City	Country	    Department	
+
+1.    Harsha	  21	     20000	Hyd	India		HR
+2.    Rahul	  22	     21000	Kol	India		HR
+3.    Ramu	  24	     34000	Del	India		OPs
+4.    Hameed 	  21	     45000	punj	India		Fin
+5.    Mounika	  21	     56000	Cdp	India		Mkt
+
+
+Queries:
+1.Findout the number of whose salary is greater than 30000?
+
+package Query2;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+public class Query2$2 {
+	public static void main(String []args) throws IOException
+	{
+		BufferedReader bis = null;
+		InputStream in = null;
+		InputStreamReader inr = null;
+		String sal[];
+		try{
+			in = new FileInputStream("d://mytext.txt");
+			inr  = new InputStreamReader(in);
+			bis = new BufferedReader(inr);
+			String s;
+			int count = 0;
+			while((s = bis.readLine())!=null)
+			{
+				sal = s.split(",");
+			for(int i =0;i<sal.length;i++)
+			{
+				int temp = Integer.parseInt(sal[i]);
+				if(temp>=30000){
+					count++;
+				}
+			}
+			}
+			System.out.println("the number of people whose sal is greater than 30000 are "+ count);
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally{
+			if(in!=null)
+			{
+				in.close();
+			}
+			if(bis!=null)
+			{
+				bis.close();
+			}
+		}
+	}
+
+}
+output:
+
+	//the salary deatails are in file and i am using iostreams to read and calculate the values.
+	the number of people whose sal is greater than 30000 are 3
+
+
+
+Schema:
+	name 	Age	Salary		Department
+1.	Harsha	21	56000		HR
+2.	MOunika	21	81000		MKT
+3.	Hameed  21	70000		FIN
+4.	Gandhi	20	71000		OPS
+5.	Suman	21	58000		MKT
+
+
+
+
+Query: 
+
+	Count of employees in each department whose sal is > 5000?
+
+package Query2;
+import java.util.Scanner;
+public class Query$3 {
+public static void main(String []args)
+{
+	Scanner s = new Scanner(System.in);
+	int size = s.nextInt();
+	String []dept = new String[size];
+	int []sal = new int[size];
+	for(int i =0;i<size;i++)
+	{
+		System.out.println(" enter the department: ");
+		dept[i] = s.next();
+		System.out.println("enter the salary");
+		sal[i] = s.nextInt();
+	}
+	int i = 0;
+	int count = 0;
+	while(i<size)
+	{
+		if(dept[i].equals("HR")&&sal[i]>=50000)
+		{
+			count++;
+		}
+		i++;
+	}
+	int j = 0;
+	int decount =0;
+	while(j<size)
+	{
+		if(dept[j].equals("FIN")&&sal[j]>=50000)
+		{
+			decount++;
+		}
+		j++;
+	}
+	int k = 0;
+	int decount1 = 0;
+	while(k<size)
+	{
+		if(dept[k].equals("MKT")&&sal[k]>=50000)
+		{
+			decount1++;
+		}
+		k++;
+	}
+	int f = 0;
+	int decount2 = 0;
+	while(f<size)
+	{
+		if(dept[f].equals("OPS")&&sal[f]>=50000)
+		{
+			decount2++;
+		}
+		f++;
+	}
+	System.out.println("the numer of people in HR department sal > 50000 are: "+ count);
+	System.out.println("the numer of people in FIN department sal > 50000 are: "+ decount);
+	System.out.println("the numer of people in MKT department sal > 50000 are: "+ decount1);
+	System.out.println("the numer of people in OPS department sal > 50000 are: "+ decount2);
+
+}
+}
+
+o/p:
+size of recrds: 3
+ enter the department: 
+MKT
+enter the salary
+30000
+ enter the department: 
+FIN
+enter the salary
+56000
+ enter the department: 
+MKT
+enter the salary
+57000
+the numer of people in HR department sal > 50000 are: 0
+the numer of people in FIN department sal > 50000 are: 1
+the numer of people in MKT department sal > 50000 are: 1
+the numer of people in OPS department sal > 50000 are: 0
+
+
+Schema:
+	Name 	Age	Gender	Status    Education	country	 city	state
+1. 	Harsha	14	Male	Single	  10		India	HYD	Telanaga
+2. 	varuni	18	Female	Married	  12		India	HYD	Telanaga
+3. 	Rahul   21	Male	Single	  12		India	HYD	Telanaga
+4. 	Pramod	18	Male	married	  pg		India	HYD	Telanaga
+5. 	Karthik	32	Male	Single	  pg		India	HYD	Telanaga
+
+
+query: 1.count of boys in population who are goin to appear in board exams?
+	2.count of females whose status is single in the given population?
+
+import java.util.Scanner;
+public class Query2$4 {
+	public static void main(String []args)
+	{
+		Scanner s = new Scanner(System.in);
+		System.out.println("the value of records to be entered: ");
+		int size = s.nextInt();
+		String []a = new String[size];
+		String []status = new String[size];
+		String []edu = new String[size];
+		for(int i = 0;i<size;i++)
+		{
+			a[i]= s.next();
+			edu[i] = s.next();
+			status[i] = s.next();
+		}
+		int count = 0,decount=0;
+		for(int j=0;j<size;j++)
+		{
+			if(a[j].equals("male")&&a[j].equals("10"))
+			{
+				count++;
+			}
+			if(a[j].equals("female")&&status[j].equals("single"))
+			{
+				decount++;
+			}
+		}
+		System.out.println("the number of males present in the population are "+count);
+		System.out.println("The number of ladies who status is single "+ decount);
+	}
+
+}
+
